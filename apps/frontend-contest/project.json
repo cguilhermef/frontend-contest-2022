@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/frontend-contest",
         "index": "apps/frontend-contest/src/index.html",
@@ -17,7 +19,9 @@
           "apps/frontend-contest/src/favicon.ico",
           "apps/frontend-contest/src/assets"
         ],
-        "styles": ["apps/frontend-contest/src/styles.scss"],
+        "styles": [
+          "apps/frontend-contest/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -85,12 +89,16 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/frontend-contest"],
+      "outputs": [
+        "coverage/apps/frontend-contest"
+      ],
       "options": {
         "jestConfig": "apps/frontend-contest/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": []
+  "tags": [
+    "scope:frontend-contest"
+  ]
 }

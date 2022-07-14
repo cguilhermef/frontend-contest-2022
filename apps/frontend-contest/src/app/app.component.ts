@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@frontend-contest/api-interfaces';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'frontend-contest-root',
@@ -8,6 +8,13 @@ import { Message } from '@frontend-contest/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.http
+      .post('/api/login', {
+        email: 'usuario123@email.com',
+        password: '123456',
+      })
+      .pipe(first())
+      .subscribe();
+  }
 }

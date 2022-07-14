@@ -1,105 +1,44 @@
-
-
 # FrontendContest
 
-This project was generated using [Nx](https://nx.dev).
+Este projeto utiliza o workspace gerado pelo [Nx dev](https://nx.dev/). O mock foi construido
+usando [NestJS](https://nestjs.com/), com o [LowDB v1](https://github.com/typicode/lowdb/tree/v1.0.0).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+O app *api* é um mock da API.  
+O app *frontend-contest* é o app a ser desenvolvido
 
-🔎 **Smart, Fast and Extensible Build System**
+## Instalando
 
-## Quick Start & Documentation
+Instale o yarn, o nx e o @nwrl/cli globalmente:
 
-[Nx Documentation](https://nx.dev/angular)
+`npm install -g yarn nx @nrwl/cli`
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+Clone o repositório e execute `yarn`
 
-[Interactive Tutorial](https://nx.dev/react-tutorial/01-create-application)
+Em um terminal, execute `nx run frontend-contest:serve`, para iniciar a aplicação em modo
+desenvolvimento.
 
-## Adding capabilities to your workspace
+Em outro terminal, execute `nx run api:serve`, para iniciar o mock da API.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Objetivos
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+Esta é uma aplicação simples, com uma tela de login, uma lista de usuários, e um formulário de cadastro e edição de
+usuários.  
+A tela de login só pode ser acessada enquanto o usuário não estiver logado.  
+As telas de lista e edição de usuário só podem ser acessadas quando o usuário estiver logado.
 
-Below are our core plugins:
+### Requisitos
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+* controle de acesso autenticado/não autenticado
+* listar, criar e editar usuários
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+### Desejáveis
 
-## Generate an application
+* teste unitário
+* utilizar Angular Material
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+### Diferencial
 
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@frontend-contest/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+* fazer o controle de estado usando [NgRx](https://ngrx.io)
+* implementar fluxo de recuperar senha
+  * Assumir que o usuário receberá um email contendo um link
+  * Ao acessar o link, ele acessa a tela de "recovery", para escolher uma nova senha.

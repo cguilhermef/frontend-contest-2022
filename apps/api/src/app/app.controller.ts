@@ -1,6 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
-
-import { Message } from '@frontend-contest/api-interfaces';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -8,8 +13,17 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Post('login')
+  login(@Body() body: { email: string; password: string }) {
+    const { email, password } = body;
+    const found = this.appService.login(email, password);
+    if (!found) {
+      throw new HttpException('NotFoundException', HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @Get('users')
+  users() {
+    return this.appService.listUsers();
   }
 }
